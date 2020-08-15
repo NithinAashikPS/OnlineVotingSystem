@@ -1,0 +1,112 @@
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add New Position</h3>
+                        <div class="card-options">
+                            <form id="addNewPosition" action="/addNewPosition">
+                                <div class="input-group">
+                                    <input name="position" type="text" class="form-control" placeholder="Position Name...">
+                                    <span class="input-group-append">
+                                      <button id="addNewPositionbtn" class="btn btn-primary" type="button">Add</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table card-table table-striped table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th colspan="2">Position</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for( var i = 0; i < position.count; i++ ) { %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <% var str = position.positions[i].position; var matches = str.match(/\b(\w)/g); var acronym = matches.join(''); %>
+                                                <td class="w-1"><span class="avatar avatar-green"><%= acronym %> </span></span>
+                                                </td>
+                                                <td>
+                                                    <%= position.positions[i].position %>
+                                                </td>
+                                                <td class="w-1"><a href="/deletePosition/<%= position.positions[i]._id %>" class="icon"><i class="fe fe-trash"></i></a></td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add New Candidate</h3>
+                        <div class="card-options">
+                            <form class="addCandidate" action="">
+                                <div class="input-group">
+                                    <input name="name" type="text" class="form-control name" placeholder="Candidate Name...">
+                                    <div class="input-group-append">
+                                        <button data-toggle="dropdown" type="button" class="btn btn-primary dropdown-toggle" aria-expanded="false"><i class="fe fe-chevron-down"></i></button>
+                                        <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; transform: translate3d(359px, -2px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <% for( var i = 0; i < position.count; i++ ) { %>
+                                                <a class="dropdown-item addCandidatebtn" href="/addCandidate/<%= position.positions[i].position %> ">
+                                                    <%= position.positions[i].position %>
+                                                </a>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table card-table table-striped table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th colspan="2">Candidate</th>
+                                        <th colspan="2">Position</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for( var i = 0; i < candidate.count; i++ ) { %>
+                                        <tr>
+                                            <td>
+                                                <%= i+1 %>
+                                            </td>
+                                            <% var str = candidate.candidates[i].name; var matches = str.match(/\b(\w)/g); var acronym = matches.join(''); %>
+                                                <td class="w-1"><span class="avatar avatar-teal"><%= acronym %> </span></span>
+                                                </td>
+                                                <td>
+                                                    <%= candidate.candidates[i].name %>
+                                                </td>
+                                                <% var str = candidate.candidates[i].position; var matches = str.match(/\b(\w)/g); var acronym = matches.join(''); %>
+                                                    <td class="w-1"><span class="avatar avatar-green"><%= acronym %> </span></span>
+                                                    </td>
+                                                    <td>
+                                                        <%= candidate.candidates[i].position %>
+                                                    </td>
+                                                    <td class="w-1"><a href="/deleteCandidate/<%= candidate.candidates[i]._id %>" class="icon"><i class="fe fe-trash"></i></a></td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

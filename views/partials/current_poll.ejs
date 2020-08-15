@@ -1,0 +1,69 @@
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Choose position</h3>
+                        <div class="card-options">
+                            <form action="">
+                                <div class="input-group">
+                                    <select id="selectPosition" class="custom-select">
+                                        <option value="<%= poll.length %> " selected="">Select Position</option>
+                                        <% for( var i = 0; i < poll.length; i++ ) { %>
+                                            <% if (poll[i].candidates.length > 0) { %>
+                                            <option value="<%= poll[i].position %>"><%= poll[i].position %> </option>
+                                            <% } %>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table card-table table-striped table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th colspan="2">Candidate</th>
+                                        <th colspan="2">Position</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <% for( var i = 0; i < poll.length; i++ ) { %>
+                                    <tbody id="<%= poll[i].position %>" style="display: none;">
+                                        <% for( var j = 0; j < poll[i].candidates.length; j++ ) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= j+1 %>
+                                                </td>
+                                                <% var str = poll[i].candidates[j].name; var matches = str.match(/\b(\w)/g); var acronym = matches.join(''); %>
+                                                    <td class="w-1"><span class="avatar avatar-teal"><%= acronym %> </span></span>
+                                                    </td>
+                                                    <td>
+                                                        <%= poll[i].candidates[j].name %>
+                                                    </td>
+                                                    <% var str = poll[i].position; var matches = str.match(/\b(\w)/g); var acronym = matches.join(''); %>
+                                                        <td class="w-1"><span class="avatar avatar-green"><%= acronym %> </span></span>
+                                                        </td>
+                                                        <td>
+                                                            <%= poll[i].position %>
+                                                        </td>
+                                                        <% if (!poll[i].voted) { %>
+                                                            <td class="w-1"><a href="/vote/<%= poll[i].candidates[j]._id %>/<%= id %> " class="icon"><span class="badge badge-success">Vote</span></a></td>
+                                                            <% } else {%>
+                                                                <td class="w-1"><a href="" class="icon voteFinish"><span class="badge badge-danger">Vote</span></a></td>
+                                                                <% } %>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                    <% } %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<%- include('partials/head'); %>
+    <body class="">
+        <div class="page">
+            <div class="page-single">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-login mx-auto">
+                            <div class="text-center mb-6">
+                                <img src="/tabler.svg" class="h-6" alt="">
+                            </div>
+                            <form id="forgotPasswordForm" class="card" action="/changePassword/<%= email %>/<%= type %> ">
+                                <div class="card-body p-6">
+                                    <div class="card-title">Reset password</div>
+                                    <p class="text-muted">Enter your new password and your password will be reset.</p>
+                                    <div class="form-group">
+                                        <label class="form-label" for="exampleInputEmail1">New Password</label>
+                                        <input name="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password">
+                                    </div>
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-primary btn-block">Reset password</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

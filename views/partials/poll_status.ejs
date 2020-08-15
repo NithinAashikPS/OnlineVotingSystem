@@ -1,0 +1,59 @@
+<div class="my-3 my-md-5">
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">
+                Poll Status
+            </h1>
+        </div>
+        <div class="row">
+            <% for( var i = 0; i < poll.length; i++ ) { %>
+                <div class="col-sm-6">
+                    <% if (poll[i].candidates.length > 0) { %>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <%= poll[i].position %>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="<%= poll[i].position %>" style="height: 16rem"></div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</div>
+<% for( var i = 0; i < poll.length; i++ ) { %>
+    <% if (poll[i].candidates.length > 0) { %>
+        <script type='text/javascript'>
+            require(['c3', 'jquery'], function(c3, $) {
+                $(document).ready(function() {
+                    var asd = {
+                        bindto: '#<%= poll[i].position %>', // id of chart wrapper
+                        data: {
+                            columns: <%- JSON.stringify(poll[i].columns) %>,
+                            type: 'donut', // default type of chart
+                            colors: {
+                                <%- poll[i].colours %>
+                            },
+                            names: {
+                                <%- poll[i].names %>
+                            }
+                        },
+                        axis: {},
+                        legend: {
+                            show: true, //hide legend
+                        },
+                        padding: {
+                            bottom: 0,
+                            top: 0
+                        },
+                    }
+                    c3.generate(asd);
+                });
+            });
+        </script>
+        <% } %>
+            <% } %>

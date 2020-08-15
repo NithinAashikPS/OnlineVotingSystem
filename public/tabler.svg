@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="150" viewBox="0 0 400 150">
+  <defs>
+    <clipPath id="clip-OVS_LOGO">
+      <rect width="400" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="OVS_LOGO" data-name="OVS LOGO" clip-path="url(#clip-OVS_LOGO)">
+    <rect width="400" height="150" fill="rgba(255,255,255,0)"/>
+    <text id="Online_Voting_System" data-name="Online Voting System" transform="translate(10.5 98)" fill="#1c1c1c" font-size="40" font-family="SegoeUI, Segoe UI"><tspan x="0" y="43">Online Voting System</tspan></text>
+    <text id="O" transform="translate(118 82)" fill="#06f" font-size="100" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">O</tspan></text>
+    <text id="S" transform="translate(241 82)" fill="#1c1c1c" font-size="100" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">S</tspan></text>
+    <text id="V" transform="translate(200 78)" fill="#1c1c1c" font-size="60" font-family="TrebuchetMS, Trebuchet MS"><tspan x="0" y="0">V</tspan></text>
+  </g>
+</svg>
